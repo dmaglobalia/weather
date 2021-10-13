@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ys0-r)v^uzxgs(_rir695q=l1tzs#*5o^y*2y$d7zn+7=g^44w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False    
 
-ALLOWED_HOSTS = ['127.0.0.1','openweatherss.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -133,18 +133,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #     '/static/',
 # ]
 
-STATIC_URL = '/static/'
+STATIC_URL = '/staticfiles/'
 if DEBUG:
    STATICFILES_DIRS = [
-   os.path.join(BASE_DIR, 'static'),
+   os.path.join(BASE_DIR, 'staticfiles'),
    ]
+   STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 else:
-   STATIC_ROOT = os.path.join(BASE_DIR,'static')
+   STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-import dj_database_url
-import django_heroku
-
-django_heroku.settings(locals())
